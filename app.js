@@ -12,6 +12,14 @@ $(document).ready(function () {
   // BUTTON EVENT HANDLERS
   function stopTickBtnClick(event) {
     event.preventDefault()
+
+    $('#dump-config-btn').removeAttr('disabled')
+    $('#clear-btn').removeAttr('disabled')
+    $('#one-tick-btn').removeAttr('disabled')
+    $('#start-tick-btn').removeAttr('disabled')
+
+    $('#stop-tick-btn').attr('disabled', true)
+
     console.log('stopBtnClick()')
   }
 
