@@ -20,10 +20,20 @@ $(document).ready(function () {
       const row = $('<tr>')
       for (let j = 0; j < maxCols; j++) {
         const cell = $('<td>')
+        const rowColString = `${i},${j}`
+        cell.attr('data-row-col', rowColString)
+        cell.click(uiGridCellClick)
         row.append(cell)
       }
       $('#ui-grid').append(row)
     }
+  }
+
+  // CELL EVENT HANDLERS
+  function uiGridCellClick(event) {
+    event.preventDefault()
+    const rowColString = $(this).attr('data-row-col')
+    console.log(`uiGridCellClick() ${rowColString}`)
   }
 
   // BUTTON EVENT HANDLERS
@@ -36,8 +46,6 @@ $(document).ready(function () {
     $('#start-tick-btn').removeAttr('disabled')
 
     $('#stop-tick-btn').attr('disabled', true)
-
-    console.log('stopBtnClick()')
   }
 
   function oneTickBtnClick(event) {
@@ -54,8 +62,6 @@ $(document).ready(function () {
     $('#start-tick-btn').attr('disabled', true)
 
     $('#stop-tick-btn').removeAttr('disabled')
-
-    console.log('startTickBtnClick()')
   }
 
   function clearBtnClick(event) {
